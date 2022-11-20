@@ -4,13 +4,10 @@ import { supabase } from "../supabase";
 export const Context = createContext();
 
 const createProject = async (data) => {
-   return await supabase.from("projects").insert(data);
+   const a = await supabase.from("projects").insert(data);
+   console.log(a);
 };
 
 export const AppContextProvider = ({ children }) => {
-   return (
-      <Context.Provider value={{ createProject }}>
-         {children}
-      </Context.Provider>
-   );
+   return <Context.Provider value={{ createProject }}>{children}</Context.Provider>;
 };
